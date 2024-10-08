@@ -1,0 +1,43 @@
+[build-system]
+requires = ["scikit-build-core[pyproject]>=0.5.0", "pybind11>=2.5.0"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "parallel_sum"
+version = "0.0.1"
+description = "Python bindings for ParallelSum C++ library"
+authors = [{ name = "Your Name", email = "your.email@example.com" }]
+readme = "README.md"
+# license = "LICENSE.txt"
+requires-python = ">=3.6"
+dependencies = []
+
+[project.urls]
+"Homepage" = "https://example.com"
+
+# Pass CMake options if needed
+[tool.scikit-build.cmake]
+minimum-version = "3.15"
+
+[tool.scikit-build]
+build-dir = "_skbuild"
+
+# Specify that 'python' is the source root
+[tool.scikit-build.sdist]
+include = ["python/*"]
+
+# Set the package directory
+[tool.scikit-build-core]
+sdist-include = [
+    "python/parallel_sum/__init__.py",
+    # Exclude the .cpp file
+    # "python/parallel_sum/parallel_sum.cpp",  # Remove or comment out this line
+    "lib/**",
+    "CMakeLists.txt"
+]
+wheel-include = [
+    "parallel_sum/__init__.py",
+    "parallel_sum/_parallel_sum*.so",  # Include the compiled module
+    # Exclude the .cpp file
+    # "parallel_sum/parallel_sum.cpp",  # Remove or comment out this line
+]

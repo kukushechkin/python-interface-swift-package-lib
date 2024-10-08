@@ -1,0 +1,4 @@
+.venv
+_skbuild/*
+lib/.build/*
+/dist
