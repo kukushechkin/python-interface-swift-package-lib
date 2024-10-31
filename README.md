@@ -34,7 +34,7 @@ This will:
 - link the C++ library with the Python bindings
 - create a Python package
 
-You can now install the Pythong package with:
+You can now install the Python package with:
 
 ```bash
 uv pip install dist/parallel_sum-*.whl
